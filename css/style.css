@@ -2423,3 +2423,405 @@ h4,
     background-size: auto 100%;
   }
 }
+
+
+/* Home artwork aligned to header content edges */
+.home-hero-figure {
+  width: min(1180px, calc(100% - 48px));
+  margin: 0 auto;
+  padding-top: 104px;
+  background: transparent;
+}
+
+.home-hero-art {
+  width: 100%;
+  height: auto;
+  border-radius: 0;
+}
+
+.home-hero-actions {
+  left: 50%;
+  bottom: clamp(44px, 5.2vw, 86px);
+  width: min(560px, 46%);
+  padding: 12px;
+  gap: 16px;
+  background: rgba(255,255,255,0.72);
+  border-color: rgba(255,255,255,0.7);
+  box-shadow: 0 20px 48px rgba(3,30,70,0.16);
+}
+
+.home-hero-actions .btn {
+  min-height: 54px;
+  padding: 15px 24px;
+  font-size: 16px;
+}
+
+@media (min-width: 1280px) {
+  .home-hero-figure {
+    width: min(1320px, calc(100% - 64px));
+  }
+}
+
+@media (max-width: 1000px) {
+  .home-hero-figure {
+    width: min(100% - 32px, 1180px);
+    padding-top: 92px;
+  }
+  .home-hero-actions {
+    bottom: clamp(26px, 4.8vw, 52px);
+    width: min(520px, 58%);
+  }
+}
+
+@media (max-width: 760px) {
+  .home-hero-figure {
+    width: calc(100% - 24px);
+    padding-top: 82px;
+  }
+  .home-hero-actions {
+    position: absolute;
+    left: 50%;
+    bottom: 18px;
+    transform: translateX(-50%);
+    display: grid;
+    width: min(88%, 360px);
+    border-radius: 18px;
+  }
+  .home-hero-actions .btn {
+    min-height: 48px;
+    padding: 13px 18px;
+    font-size: 15px;
+  }
+}
+
+/* Late June refinement: homepage, travel guide, sponsors, and logo-only footer */
+.dates-timeline--four {
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  align-items: stretch;
+  justify-content: center;
+}
+
+.dates-timeline--four .date-card {
+  min-height: 230px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+}
+
+.home-venue-immersive {
+  position: relative;
+  min-height: clamp(560px, 58vw, 760px);
+  display: grid;
+  align-items: center;
+  overflow: hidden;
+  background:
+    linear-gradient(90deg, rgba(3,30,70,0.82) 0%, rgba(3,30,70,0.64) 42%, rgba(3,30,70,0.18) 100%),
+    linear-gradient(0deg, rgba(255,255,255,0.12), rgba(255,255,255,0.12)),
+    url("../assets/venue/UT1.jpg") center / cover no-repeat;
+}
+
+.home-venue-immersive::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(circle at 84% 20%, rgba(205,158,52,0.22), transparent 34%);
+  pointer-events: none;
+}
+
+.venue-glass-panel {
+  position: relative;
+  z-index: 1;
+  width: min(660px, 100%);
+  padding: clamp(28px, 4vw, 52px);
+  border: 1px solid rgba(255,255,255,0.28);
+  border-radius: 24px;
+  color: #fff;
+  background: linear-gradient(135deg, rgba(3,30,70,0.82), rgba(8,50,98,0.58));
+  box-shadow: 0 28px 80px rgba(3,30,70,0.28);
+  backdrop-filter: blur(12px);
+}
+
+.venue-glass-panel .section-title,
+.venue-glass-panel h3,
+.venue-glass-panel p,
+.venue-glass-panel .venue-fact strong,
+.venue-glass-panel .venue-fact span {
+  color: #fff;
+}
+
+.venue-glass-panel .section-heading {
+  margin-bottom: 16px;
+}
+
+.venue-glass-panel h3 {
+  margin: 0 0 16px;
+  font-size: clamp(34px, 4vw, 58px);
+  line-height: 1;
+}
+
+.venue-glass-panel p {
+  max-width: 58ch;
+  color: rgba(255,255,255,0.88);
+}
+
+.venue-facts {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 12px;
+  margin-top: 28px;
+}
+
+.venue-fact {
+  min-width: 0;
+  padding: 16px;
+  border-radius: 16px;
+  background: rgba(255,255,255,0.12);
+  border: 1px solid rgba(255,255,255,0.16);
+}
+
+.travel-card--link {
+  display: block;
+  color: inherit;
+  text-decoration: none;
+}
+
+.travel-card--link:hover h3,
+.travel-card--link:focus-visible h3 {
+  color: var(--gold);
+}
+
+.travel-guide-strip {
+  padding-top: 52px;
+}
+
+.enhanced-cruise {
+  align-items: stretch;
+}
+
+.social-media-grid {
+  display: grid;
+  grid-template-rows: 1fr 1fr;
+  gap: 18px;
+  min-height: 100%;
+}
+
+.social-media-grid .media {
+  min-height: 230px;
+  border-radius: 22px;
+  box-shadow: 0 22px 56px rgba(4,36,82,0.14);
+}
+
+.hotel-grid--visual {
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 24px;
+}
+
+.hotel-card--visual {
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+  padding: 0;
+}
+
+.hotel-card--visual > div:not(.hotel-image) {
+  padding: 0 22px;
+}
+
+.hotel-card--visual > div:nth-child(2) {
+  padding-top: 20px;
+}
+
+.hotel-card--visual .hotel-actions {
+  margin-top: auto;
+  padding: 18px 22px 22px;
+}
+
+.hotel-image {
+  width: 100%;
+  border-radius: 0;
+}
+
+.experience-card {
+  overflow: hidden;
+}
+
+.weather-grid--fixed {
+  display: grid;
+  grid-template-columns: minmax(0, 0.9fr) minmax(0, 1.35fr);
+  gap: 26px;
+  align-items: start;
+}
+
+.weather-grid--fixed .weather-copy {
+  grid-column: 1;
+}
+
+.weather-grid--fixed .weather-metrics {
+  grid-column: 2;
+  grid-row: 1 / span 2;
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 18px;
+  width: 100%;
+  max-width: 100%;
+  padding: 24px;
+  border-radius: 24px;
+}
+
+.weather-grid--fixed .packing-list {
+  grid-column: 1;
+}
+
+.weather-metrics div {
+  min-width: 0;
+  padding: clamp(20px, 3vw, 32px);
+  overflow-wrap: anywhere;
+}
+
+.weather-metrics strong {
+  white-space: nowrap;
+  font-size: clamp(38px, 5vw, 64px);
+}
+
+.weather-metrics span {
+  font-size: clamp(16px, 2vw, 22px);
+  line-height: 1.45;
+}
+
+.home-sponsor-section {
+  background:
+    linear-gradient(135deg, rgba(3,30,70,0.92), rgba(12,62,112,0.86)),
+    url("../assets/ornaments/molecular-network-blue-gold.png") right 10% center / 420px auto no-repeat;
+  color: #fff;
+}
+
+.sponsor-home-panel {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) auto;
+  gap: 24px;
+  align-items: center;
+}
+
+.sponsor-home-panel .section-heading,
+.sponsor-home-panel p {
+  margin: 0;
+}
+
+.sponsor-home-panel .section-title,
+.sponsor-home-panel p {
+  color: #fff;
+}
+
+.sponsor-page-hero {
+  background:
+    linear-gradient(135deg, rgba(3,30,70,0.92), rgba(6,48,94,0.72)),
+    url("../assets/venue/UT3.jpg") center / cover no-repeat;
+}
+
+.sponsor-page-grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 24px;
+}
+
+.sponsor-tier,
+.sponsor-contact-panel {
+  border-radius: 22px;
+  border: 1px solid rgba(8,48,92,0.12);
+  background: #fff;
+  box-shadow: 0 22px 58px rgba(4,36,82,0.10);
+}
+
+.sponsor-tier {
+  padding: 28px;
+}
+
+.sponsor-tier span {
+  display: inline-flex;
+  margin-bottom: 18px;
+  color: var(--gold-dark);
+  font-weight: 800;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.sponsor-contact-panel {
+  padding: clamp(28px, 5vw, 54px);
+  text-align: center;
+}
+
+.site-footer--logo-only {
+  min-height: max(520px, calc(100vw * 941 / 1672));
+  padding: 0;
+  display: grid;
+  align-items: center;
+  background-image: url("../assets/footer/footer2.png");
+  background-size: 100% 100%;
+  background-position: center center;
+  background-repeat: no-repeat;
+}
+
+.footer-logo-only {
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  min-height: inherit;
+}
+
+.footer-logo-large {
+  display: block;
+  width: clamp(320px, 44vw, 660px);
+  height: auto;
+  filter: drop-shadow(0 18px 34px rgba(0,0,0,0.22));
+}
+
+@media (max-width: 1080px) {
+  .dates-timeline--four,
+  .hotel-grid--visual,
+  .sponsor-page-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+  .weather-grid--fixed {
+    grid-template-columns: 1fr;
+  }
+  .weather-grid--fixed .weather-copy,
+  .weather-grid--fixed .weather-metrics,
+  .weather-grid--fixed .packing-list {
+    grid-column: 1;
+    grid-row: auto;
+  }
+}
+
+@media (max-width: 760px) {
+  .dates-timeline--four,
+  .hotel-grid--visual,
+  .sponsor-page-grid,
+  .sponsor-home-panel,
+  .venue-facts {
+    grid-template-columns: 1fr;
+  }
+  .home-venue-immersive {
+    min-height: auto;
+    padding: 72px 0;
+  }
+  .social-media-grid {
+    grid-template-rows: none;
+  }
+  .weather-grid--fixed .weather-metrics {
+    grid-template-columns: 1fr;
+    padding: 16px;
+  }
+  .site-footer--logo-only {
+    min-height: 620px;
+    background-size: auto 100%;
+  }
+  .footer-logo-only {
+    justify-content: center;
+    align-items: center;
+  }
+  .footer-logo-large {
+    width: min(78vw, 430px);
+  }
+}
