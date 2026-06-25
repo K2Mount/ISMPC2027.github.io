@@ -1609,3 +1609,372 @@ h4,
     width: 124px;
   }
 }
+
+
+/* Travel guide expansion */
+.travel-page-hero {
+  overflow: hidden;
+}
+
+.travel-overview {
+  padding-top: 78px;
+}
+
+.travel-overview-grid,
+.split-feature,
+.weather-grid {
+  display: grid;
+  grid-template-columns: minmax(0, 1.05fr) minmax(360px, 0.95fr);
+  gap: clamp(28px, 5vw, 64px);
+  align-items: center;
+}
+
+.travel-brief,
+.cruise-card {
+  position: relative;
+  padding: clamp(28px, 4vw, 46px);
+  border: 1px solid rgba(11,48,92,0.1);
+  border-radius: 18px;
+  background: linear-gradient(135deg, #fff, #f7fafc);
+  box-shadow: 0 20px 54px rgba(5, 35, 77, 0.1);
+}
+
+.eyebrow,
+.hotel-label {
+  display: inline-flex;
+  align-items: center;
+  width: fit-content;
+  margin-bottom: 12px;
+  padding: 6px 10px;
+  border-radius: 999px;
+  background: rgba(198,155,69,0.12);
+  color: var(--gold);
+  font-size: 11px;
+  font-weight: 850;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+}
+
+.travel-brief h2,
+.cruise-card h2 {
+  margin-bottom: 14px;
+  color: var(--navy);
+  font-size: clamp(30px, 4vw, 48px);
+  line-height: 1.1;
+}
+
+.quick-route {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 10px;
+  margin: 26px 0;
+}
+
+.quick-route span {
+  position: relative;
+  min-height: 58px;
+  display: grid;
+  place-items: center;
+  padding: 10px;
+  border-radius: 12px;
+  background: rgba(10, 49, 92, 0.06);
+  color: var(--navy);
+  font-weight: 850;
+  text-align: center;
+}
+
+.quick-route span + span::before {
+  content: "";
+  position: absolute;
+  left: -10px;
+  top: 50%;
+  width: 10px;
+  height: 2px;
+  background: var(--gold);
+}
+
+.travel-hero-media {
+  min-height: 380px;
+  border-radius: 18px;
+  box-shadow: 0 24px 58px rgba(5, 35, 77, 0.16);
+}
+
+.guide-nav {
+  position: sticky;
+  top: 88px;
+  z-index: 4;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin-bottom: 28px;
+  padding: 12px;
+  border: 1px solid rgba(11,48,92,0.1);
+  border-radius: 16px;
+  background: rgba(255,255,255,0.86);
+  backdrop-filter: blur(14px);
+  box-shadow: 0 16px 34px rgba(5,35,77,0.08);
+}
+
+.guide-nav a,
+.source-grid a,
+.hotel-actions a,
+.experience-card a,
+.packing-list a,
+.guide-card a {
+  color: var(--navy);
+  font-weight: 850;
+  text-decoration: none;
+}
+
+.guide-nav a {
+  padding: 9px 12px;
+  border-radius: 999px;
+  background: rgba(10, 49, 92, 0.06);
+}
+
+.guide-nav a:hover,
+.source-grid a:hover,
+.hotel-actions a:hover,
+.experience-card a:hover,
+.packing-list a:hover,
+.guide-card a:hover {
+  color: var(--gold);
+}
+
+.travel-card-row,
+.transport-grid,
+.experience-grid,
+.source-grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 18px;
+}
+
+.guide-card,
+.route-card,
+.hotel-card,
+.experience-card,
+.weather-metrics,
+.packing-list {
+  border: 1px solid rgba(11,48,92,0.1);
+  border-radius: 16px;
+  background: #fff;
+  box-shadow: 0 14px 34px rgba(5,35,77,0.08);
+}
+
+.guide-card,
+.route-card,
+.weather-metrics,
+.packing-list {
+  padding: 24px;
+}
+
+.guide-card span {
+  display: inline-grid;
+  place-items: center;
+  width: 42px;
+  height: 42px;
+  margin-bottom: 18px;
+  border-radius: 50%;
+  background: var(--navy);
+  color: #fff;
+  font-weight: 900;
+}
+
+.guide-card h3,
+.route-card h3,
+.hotel-card h3,
+.experience-card h3,
+.packing-list h3 {
+  color: var(--navy);
+  font-size: 20px;
+  line-height: 1.22;
+}
+
+.info-stack {
+  display: grid;
+  gap: 16px;
+}
+
+.transport-grid {
+  margin-top: 8px;
+}
+
+.route-card ul,
+.packing-list ul {
+  margin: 16px 0 0;
+  padding-left: 18px;
+  color: var(--text-muted);
+}
+
+.route-card li,
+.packing-list li {
+  margin: 8px 0;
+}
+
+.hotel-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 18px;
+  margin-top: 26px;
+}
+
+.hotel-card {
+  display: grid;
+  min-height: 260px;
+  padding: 24px;
+}
+
+.hotel-card p {
+  margin-top: 10px;
+  color: var(--text-muted);
+}
+
+.hotel-actions {
+  display: flex;
+  flex-wrap: wrap;
+  align-self: end;
+  gap: 10px;
+  margin-top: 22px;
+}
+
+.hotel-actions a,
+.source-grid a,
+.guide-card a,
+.experience-card a,
+.packing-list a {
+  display: inline-flex;
+  align-items: center;
+  min-height: 38px;
+  padding: 8px 12px;
+  border: 1px solid rgba(198,155,69,0.28);
+  border-radius: 999px;
+  background: rgba(198,155,69,0.08);
+}
+
+.enhanced-cruise {
+  align-items: stretch;
+}
+
+.compact-fields {
+  margin: 22px 0;
+}
+
+.experience-grid {
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+}
+
+.experience-card {
+  overflow: hidden;
+}
+
+.experience-card > div:not(.travel-card__media) {
+  display: grid;
+  gap: 10px;
+  padding: 20px;
+}
+
+.weather-grid {
+  grid-template-columns: minmax(0, 0.9fr) minmax(280px, 0.75fr) minmax(320px, 0.8fr);
+  align-items: stretch;
+}
+
+.weather-metrics {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 12px;
+}
+
+.weather-metrics div {
+  display: grid;
+  align-content: center;
+  min-height: 116px;
+  padding: 16px;
+  border-radius: 14px;
+  background: linear-gradient(135deg, rgba(10,49,92,0.07), rgba(198,155,69,0.1));
+}
+
+.weather-metrics strong {
+  color: var(--navy);
+  font-size: 30px;
+  line-height: 1;
+}
+
+.weather-metrics span {
+  margin-top: 6px;
+  color: var(--text-muted);
+  font-size: 13px;
+}
+
+.source-band {
+  background: var(--deep-navy);
+  color: #fff;
+}
+
+.source-band .section-title {
+  color: #fff;
+}
+
+.source-grid {
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+}
+
+.source-grid a {
+  justify-content: center;
+  min-height: 54px;
+  border-color: rgba(255,255,255,0.16);
+  background: rgba(255,255,255,0.08);
+  color: #fff;
+  text-align: center;
+}
+
+@media (max-width: 1080px) {
+  .travel-overview-grid,
+  .split-feature,
+  .weather-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .travel-card-row,
+  .transport-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .experience-grid,
+  .source-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+@media (max-width: 760px) {
+  .travel-brief,
+  .cruise-card,
+  .guide-card,
+  .route-card,
+  .hotel-card,
+  .weather-metrics,
+  .packing-list {
+    padding: 20px;
+  }
+
+  .quick-route,
+  .hotel-grid,
+  .experience-grid,
+  .source-grid,
+  .weather-metrics {
+    grid-template-columns: 1fr;
+  }
+
+  .quick-route span + span::before {
+    display: none;
+  }
+
+  .guide-nav {
+    position: relative;
+    top: auto;
+  }
+
+  .travel-hero-media {
+    min-height: 240px;
+  }
+}
