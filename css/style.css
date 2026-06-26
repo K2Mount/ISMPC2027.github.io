@@ -3602,3 +3602,628 @@ h4,
     grid-template-columns: 1fr;
   }
 }
+
+/* Responsive stability pass */
+/*
+Breakpoints:
+- Large desktop: >= 1200px
+- Desktop: 1024px - 1199px
+- Tablet: 768px - 1023px
+- Large mobile: 560px - 767px
+- Small mobile: <= 559px
+*/
+:root {
+  --container-max: 1180px;
+  --container-wide: 1320px;
+  --page-gutter: 24px;
+  --page-gutter-mobile: 16px;
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+html,
+body {
+  max-width: 100%;
+  overflow-x: hidden;
+}
+
+img,
+svg,
+video {
+  max-width: 100%;
+}
+
+.container {
+  width: min(var(--container-max), calc(100% - 2 * var(--page-gutter))) !important;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.container-wide {
+  width: min(var(--container-wide), calc(100% - 2 * var(--page-gutter)));
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.container,
+.section,
+.card,
+.showcase,
+.grid,
+.grid > *,
+.showcase > *,
+.featured-speaker-grid > *,
+.dates-timeline > *,
+.travel-info-grid > *,
+.sponsors-panel > * {
+  min-width: 0;
+}
+
+a,
+p,
+li {
+  overflow-wrap: anywhere;
+}
+
+.section {
+  padding: 76px 0;
+}
+
+.section-compact {
+  padding: 56px 0;
+}
+
+.section-soft {
+  background: linear-gradient(180deg, #ffffff 0%, #f7faff 100%);
+}
+
+.grid-3 {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 28px;
+}
+
+.grid-4 {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 24px;
+}
+
+.featured-speaker-grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 30px;
+}
+
+.dates-timeline {
+  display: grid;
+  grid-template-columns: repeat(6, minmax(0, 1fr));
+  gap: 24px;
+}
+
+.site-header {
+  position: sticky;
+  top: 0;
+  z-index: 50;
+  background: rgba(255,255,255,0.96);
+  backdrop-filter: blur(10px);
+  border-bottom: 1px solid rgba(5,44,99,0.08);
+}
+
+.header-inner {
+  min-height: 96px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 28px;
+}
+
+.nav {
+  display: flex;
+  align-items: center;
+  gap: clamp(12px, 1.35vw, 24px);
+  flex-wrap: nowrap;
+}
+
+.nav-link,
+.nav a {
+  white-space: nowrap;
+}
+
+.logo-img {
+  display: block;
+  height: auto;
+  object-fit: contain;
+  flex-shrink: 0;
+}
+
+.logo-img--header {
+  width: clamp(190px, 20vw, 300px) !important;
+  max-height: 76px;
+  object-fit: contain;
+}
+
+.logo-img--compact {
+  width: clamp(145px, 18vw, 230px);
+  max-height: 60px;
+  object-fit: contain;
+}
+
+.logo-img--mark {
+  width: 88px;
+  height: 88px;
+  object-fit: contain;
+}
+
+.hero-artwork-wrap {
+  width: min(var(--container-wide), calc(100% - 2 * var(--page-gutter))) !important;
+  padding-top: 96px;
+}
+
+.venue-section {
+  position: relative;
+}
+
+.venue-wash-panel {
+  position: relative;
+  overflow: hidden;
+  border-radius: 22px;
+  background: linear-gradient(135deg, #f7faff 0%, #ffffff 100%);
+  border: 1px solid rgba(5,44,99,0.08);
+  box-shadow: 0 14px 36px rgba(3,30,70,0.08);
+  min-height: 520px;
+}
+
+.venue-wash-bg {
+  position: absolute;
+  inset: 0;
+  background-image: url("../assets/venue/UT1.jpg");
+  background-repeat: no-repeat;
+  background-position: right center;
+  background-size: cover;
+  opacity: 0.9;
+  z-index: 0;
+}
+
+.venue-wash-bg::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background:
+    linear-gradient(
+      90deg,
+      rgba(247,250,255,0.98) 0%,
+      rgba(247,250,255,0.96) 26%,
+      rgba(247,250,255,0.88) 42%,
+      rgba(247,250,255,0.55) 62%,
+      rgba(247,250,255,0.20) 78%,
+      rgba(247,250,255,0.08) 100%
+    );
+}
+
+.venue-content {
+  position: relative;
+  z-index: 1;
+  max-width: 680px;
+  padding: 54px 48px;
+}
+
+.venue-main-heading {
+  margin: 0 0 22px;
+  color: var(--navy);
+  font-size: clamp(34px, 3vw, 52px);
+  line-height: 1.08;
+  font-weight: 800;
+}
+
+.venue-copy p {
+  color: var(--text-dark);
+  font-size: 16.5px;
+  line-height: 1.78;
+  margin: 0 0 20px;
+}
+
+.venue-facts-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 14px;
+  margin-top: 28px;
+  max-width: 520px;
+}
+
+.venue-fact {
+  background: rgba(255,255,255,0.82) !important;
+  backdrop-filter: blur(6px);
+  border: 1px solid rgba(5,44,99,0.08) !important;
+  border-left: 3px solid var(--gold) !important;
+  border-radius: 12px;
+  padding: 14px 16px;
+}
+
+.travel-content-align {
+  margin-left: 54px;
+}
+
+.travel-program-block {
+  margin-top: 34px;
+}
+
+.travel-block-label {
+  display: inline-flex;
+  align-items: center;
+  margin: 0 0 18px;
+  padding: 9px 18px;
+  border-radius: 999px;
+  background: rgba(200,149,45,0.13);
+  color: var(--gold);
+  font-size: 14px;
+  font-weight: 850;
+  text-transform: uppercase;
+  letter-spacing: 0.12em;
+}
+
+.travel-program-card {
+  position: relative;
+  overflow: hidden;
+  border-radius: 18px;
+  background:
+    linear-gradient(135deg, rgba(255,255,255,0.96) 0%, rgba(247,250,255,0.94) 100%),
+    url("../assets/travel/photo-bumboat.jpg") right center / auto 100% no-repeat;
+  border: 1px solid rgba(5,44,99,0.08);
+  box-shadow: 0 14px 34px rgba(3,30,70,0.08);
+  padding: 34px 36px;
+}
+
+.travel-program-title {
+  margin: 0 0 12px;
+  color: var(--navy);
+  font-size: clamp(24px, 2.2vw, 32px);
+  line-height: 1.2;
+  font-weight: 850;
+}
+
+.travel-program-text {
+  max-width: 980px;
+  color: var(--text-dark);
+  font-size: 16.5px;
+  line-height: 1.72;
+  margin: 0 0 24px;
+}
+
+.travel-program-details {
+  display: grid;
+  grid-template-columns: repeat(5, minmax(0, 1fr));
+  gap: 14px;
+  margin-top: 24px;
+}
+
+.travel-program-detail {
+  padding: 14px 16px;
+  border-radius: 12px;
+  background: rgba(255,255,255,0.86);
+  border: 1px solid rgba(5,44,99,0.08);
+  border-left: 3px solid var(--gold);
+}
+
+.travel-program-detail strong {
+  display: block;
+  color: var(--gold);
+  font-size: 12px;
+  font-weight: 850;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  margin-bottom: 6px;
+}
+
+.travel-program-detail span {
+  display: block;
+  color: var(--navy);
+  font-weight: 750;
+  line-height: 1.35;
+}
+
+.travel-info-block {
+  margin-top: 54px;
+}
+
+.travel-block-label--secondary {
+  background: rgba(5,44,99,0.08);
+  color: var(--navy);
+}
+
+.travel-info-grid {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 24px;
+}
+
+.travel-info-card {
+  display: flex;
+  flex-direction: column;
+  min-width: 0;
+  overflow: hidden;
+  border-radius: 16px;
+  background: #fff;
+  border: 1px solid rgba(5,44,99,0.08);
+  box-shadow: 0 10px 28px rgba(3,30,70,0.06);
+}
+
+.travel-info-card-body {
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+  padding: 22px 22px 24px;
+}
+
+.travel-info-card-title {
+  margin: 0 0 8px;
+  color: var(--navy);
+  font-size: 20px;
+  line-height: 1.25;
+  font-weight: 850;
+}
+
+.travel-info-card-text {
+  margin: 0 0 18px;
+  color: var(--text-muted);
+  font-size: 15.5px;
+  line-height: 1.6;
+}
+
+.travel-info-links {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-top: auto;
+}
+
+.travel-info-link {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 34px;
+  padding: 7px 12px;
+  border-radius: 999px;
+  background: rgba(5,44,99,0.06);
+  color: var(--navy);
+  font-size: 13px;
+  font-weight: 750;
+  text-decoration: none;
+}
+
+.sponsors-panel {
+  display: grid;
+  grid-template-columns: minmax(0, 0.9fr) minmax(0, 1.25fr);
+  gap: 42px;
+  align-items: center;
+  border-radius: 22px;
+  background:
+    radial-gradient(circle at 85% 18%, rgba(200,149,45,0.12), transparent 30%),
+    linear-gradient(135deg, #ffffff 0%, #f7faff 100%);
+  border: 1px solid rgba(5,44,99,0.08);
+  box-shadow: 0 14px 36px rgba(3,30,70,0.08);
+  padding: 48px;
+  overflow: hidden;
+}
+
+.sponsors-main-heading {
+  margin: 0 0 18px;
+  color: var(--navy);
+  font-size: clamp(30px, 2.6vw, 44px);
+  line-height: 1.12;
+  font-weight: 850;
+}
+
+.sponsors-copy p {
+  color: var(--text-dark);
+  font-size: 16.5px;
+  line-height: 1.72;
+  margin: 0 0 18px;
+}
+
+.sponsors-logo-area {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 16px;
+  align-content: center;
+}
+
+.sponsor-logo-placeholder {
+  min-height: 92px;
+  border-radius: 14px;
+  background: rgba(255,255,255,0.84);
+  border: 1px dashed rgba(5,44,99,0.22);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: rgba(5,44,99,0.48);
+  font-size: 13px;
+  font-weight: 750;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  text-align: center;
+}
+
+.sponsor-logo-placeholder img {
+  max-width: 78%;
+  max-height: 54px;
+  object-fit: contain;
+}
+
+@media (max-width: 1100px) {
+  .grid-4,
+  .travel-info-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+  .dates-timeline {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+  .travel-program-details {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+  .nav {
+    gap: 12px;
+  }
+  .nav a,
+  .nav-link {
+    font-size: 14px;
+  }
+}
+
+@media (max-width: 900px) {
+  .section {
+    padding: 64px 0;
+  }
+  .section-compact {
+    padding: 48px 0;
+  }
+  .grid-3,
+  .featured-speaker-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 22px;
+  }
+  .menu-toggle {
+    display: block;
+    flex-shrink: 0;
+  }
+  .nav {
+    position: absolute;
+    top: 96px;
+    right: var(--page-gutter);
+    left: var(--page-gutter);
+    display: none;
+    flex-direction: column;
+    align-items: stretch;
+    gap: 0;
+    padding: 10px;
+    border: 1px solid var(--border-light);
+    border-radius: 12px;
+    background: var(--white);
+    box-shadow: var(--shadow-soft);
+  }
+  .nav.is-open {
+    display: flex;
+  }
+  .nav a,
+  .nav-link {
+    padding: 13px 14px;
+    font-size: 15px;
+  }
+  .logo-img--header,
+  .logo-img--compact {
+    width: clamp(145px, 46vw, 220px) !important;
+    max-height: 56px;
+  }
+  .logo-img--mark {
+    width: 70px;
+    height: 70px;
+  }
+  .hero-artwork-wrap {
+    padding-top: 96px;
+  }
+  .venue-wash-panel {
+    min-height: auto;
+  }
+  .venue-content {
+    max-width: none;
+    padding: 38px 26px;
+  }
+  .venue-facts-grid {
+    grid-template-columns: 1fr;
+    max-width: none;
+  }
+  .venue-wash-bg {
+    background-position: center right;
+  }
+  .venue-wash-bg::after {
+    background:
+      linear-gradient(
+        180deg,
+        rgba(247,250,255,0.94) 0%,
+        rgba(247,250,255,0.90) 35%,
+        rgba(247,250,255,0.82) 60%,
+        rgba(247,250,255,0.70) 100%
+      );
+  }
+  .sponsors-panel {
+    grid-template-columns: 1fr;
+    padding: 36px 26px;
+    gap: 30px;
+  }
+  .sponsors-logo-area {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+@media (max-width: 700px) {
+  .hero-artwork-wrap {
+    width: 100% !important;
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+  }
+  .hero-artwork {
+    min-width: 760px;
+    width: 760px;
+    max-width: none;
+  }
+  .hero-click-actions {
+    left: 7%;
+    bottom: 8%;
+    transform: none;
+  }
+  .dates-timeline {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+  .travel-content-align {
+    margin-left: 0;
+  }
+  .travel-program-card {
+    padding: 28px 22px;
+    background-image: linear-gradient(135deg, #ffffff 0%, #f7faff 100%);
+  }
+  .travel-program-details {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+@media (max-width: 640px) {
+  .container,
+  .container-wide {
+    width: calc(100% - 2 * var(--page-gutter-mobile)) !important;
+  }
+  .nav {
+    right: var(--page-gutter-mobile);
+    left: var(--page-gutter-mobile);
+  }
+}
+
+@media (max-width: 560px) {
+  .section {
+    padding: 48px 0;
+  }
+  .section-compact {
+    padding: 40px 0;
+  }
+  .grid-3,
+  .grid-4,
+  .featured-speaker-grid,
+  .travel-info-grid {
+    grid-template-columns: 1fr;
+    gap: 18px;
+  }
+  .dates-timeline,
+  .travel-program-details,
+  .sponsors-logo-area {
+    grid-template-columns: 1fr;
+  }
+  .travel-info-card-body {
+    padding: 20px 18px 22px;
+  }
+  .sponsor-logo-placeholder {
+    min-height: 78px;
+  }
+}
