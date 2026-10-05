@@ -25,6 +25,8 @@
   --section-space: clamp(4rem, 7vw, 6rem);
   --card-pad: clamp(1.25rem, 2.4vw, 1.75rem);
   --card-gap: clamp(1rem, 2vw, 1.5rem);
+  --content-gap: clamp(1.25rem, 2.4vw, 1.8rem);
+  --label-gap: 0.85rem;
   --transition: 180ms ease;
   --header-height: 78px;
 }
@@ -92,6 +94,7 @@ h3 {
   color: var(--navy-950);
   font-family: Georgia, "Times New Roman", serif;
   line-height: 1.14;
+  text-wrap: balance;
 }
 
 h1 {
@@ -115,6 +118,10 @@ p:last-child,
 ul:last-child,
 ol:last-child {
   margin-bottom: 0;
+}
+
+p {
+  text-wrap: pretty;
 }
 
 :focus-visible {
@@ -169,6 +176,11 @@ ol:last-child {
   padding-block: clamp(2.75rem, 5vw, 4rem);
 }
 
+.content-stack {
+  display: grid;
+  gap: var(--content-gap);
+}
+
 .section-with-ornament {
   overflow: hidden;
 }
@@ -184,11 +196,6 @@ ol:last-child {
 .ornament-network {
   top: -4rem;
   right: -5rem;
-}
-
-.ornament-orchid {
-  right: -3rem;
-  bottom: -8rem;
 }
 
 .section-with-ornament > .container {
@@ -236,9 +243,7 @@ ol:last-child {
   margin: 0;
 }
 
-.section-subtitle,
-.lead,
-.about-copy {
+.lead {
   max-width: 72ch;
   color: var(--muted);
   font-size: clamp(1.02rem, 1.25vw, 1.15rem);
@@ -316,11 +321,11 @@ ol:last-child {
   transform: none;
 }
 
-.eyebrow,
-.gold-pill-label {
+.eyebrow {
   display: inline-flex;
   align-items: center;
   width: fit-content;
+  margin: 0 0 var(--label-gap);
   padding: 0.38rem 0.7rem;
   color: var(--gold-600);
   background: var(--gold-100);
@@ -492,12 +497,6 @@ ol:last-child {
   border-radius: 50%;
 }
 
-.home-hero__note {
-  max-width: 58ch;
-  margin-top: 1.25rem;
-  color: var(--muted);
-}
-
 .home-hero__actions {
   display: flex;
   flex-wrap: wrap;
@@ -555,57 +554,13 @@ ol:last-child {
   max-width: none;
 }
 
-.section-heading--split h2,
-.section-heading--split .eyebrow {
+.section-heading--split h2 {
   margin-bottom: 0;
-}
-
-.section-heading--split .eyebrow {
-  margin-bottom: 0.8rem;
 }
 
 .section-heading--split > p {
   margin-bottom: 0.25rem;
   color: var(--muted);
-}
-
-.home-facts {
-  position: relative;
-  z-index: 2;
-  margin-top: -2rem;
-}
-
-.home-facts__grid {
-  display: grid;
-  grid-template-columns: repeat(3, minmax(0, 1fr));
-  overflow: hidden;
-  background: var(--white);
-  border: 1px solid var(--line);
-  border-radius: var(--radius-md);
-  box-shadow: var(--shadow-md);
-}
-
-.home-fact {
-  padding: 1.35rem 1.55rem;
-}
-
-.home-fact + .home-fact {
-  border-left: 1px solid var(--line);
-}
-
-.home-fact span {
-  display: block;
-  margin-bottom: 0.3rem;
-  color: var(--gold-600);
-  font-size: 0.72rem;
-  font-weight: 800;
-  letter-spacing: 0.1em;
-  text-transform: uppercase;
-}
-
-.home-fact strong {
-  color: var(--navy-950);
-  font-size: 1.05rem;
 }
 
 /* Page hero */
@@ -644,11 +599,6 @@ ol:last-child {
   margin-bottom: 0;
   color: var(--muted);
   font-size: clamp(1.05rem, 1.6vw, 1.24rem);
-}
-
-.page-hero-wordmark,
-.page-hero-logo-mark {
-  display: none;
 }
 
 .jump-nav {
@@ -708,17 +658,26 @@ ol:last-child {
   grid-template-columns: repeat(4, minmax(0, 1fr));
 }
 
+.grid > .card {
+  display: flex;
+  flex-direction: column;
+  min-height: 100%;
+}
+
+.grid > .card > .button-row:last-child {
+  margin-top: auto;
+  padding-top: 1.25rem;
+}
+
 .card,
 .info-card,
-.feature-card,
-.date-card,
 .route-card,
 .sponsor-tier,
 .notice,
 .sponsor-contact-panel,
 .venue-panel,
-.travel-card,
-.home-visitor-panel {
+.travel-card {
+  min-width: 0;
   padding: var(--card-pad);
   background: var(--surface);
   border: 1px solid var(--line);
@@ -726,81 +685,53 @@ ol:last-child {
   box-shadow: var(--shadow-sm);
 }
 
+.card > h2,
+.notice > h2,
+.sponsor-contact-panel > h2,
+.venue-panel > h2 {
+  font-size: clamp(1.45rem, 2.35vw, 2.05rem);
+}
+
+.card > h2,
+.card > h3,
+.info-card > h3,
+.route-card > h3,
+.sponsor-tier > h3,
+.notice > h2,
+.sponsor-contact-panel > h2,
+.venue-panel > h2,
+.venue-panel > h3,
+.travel-card__body > h3 {
+  margin-bottom: 0.75rem;
+}
+
 .card p,
 .info-card p,
-.feature-card p,
-.date-card p,
 .route-card p,
 .sponsor-tier p,
 .venue-panel p,
-.travel-card p,
-.home-visitor-panel p {
+.travel-card p {
   color: var(--muted);
 }
 
 .info-card,
-.feature-card,
-.date-card {
+.route-card {
+  display: flex;
+  flex-direction: column;
   min-height: 100%;
 }
 
-.feature-row {
-  display: grid;
-  grid-template-columns: repeat(3, minmax(0, 1fr));
-  gap: var(--card-gap);
+.info-card > a:last-child,
+.route-card > a:last-child {
+  display: inline-flex;
+  align-self: flex-start;
+  margin-top: auto;
+  padding-top: 1rem;
 }
 
-.feature-icon,
-.date-card-icon {
-  width: 48px;
-  height: 48px;
-  margin-bottom: 1rem;
-  object-fit: contain;
-}
-
-.about-grid {
-  display: grid;
-  grid-template-columns: minmax(0, 0.9fr) minmax(0, 1.1fr);
-  align-items: start;
-  gap: clamp(2rem, 5vw, 4rem);
-}
-
-.dates-timeline {
-  display: grid;
-  grid-template-columns: repeat(3, minmax(0, 1fr));
-  gap: var(--card-gap);
-}
-
-.date-card-label {
-  margin-bottom: 0.45rem;
-  color: var(--gold-600);
-  font-size: 0.72rem;
-  font-weight: 800;
-  letter-spacing: 0.1em;
-  text-transform: uppercase;
-}
-
-.date-card-date {
-  color: var(--navy-950);
-  font-family: Georgia, "Times New Roman", serif;
-  font-size: 1.35rem;
-  font-weight: 700;
-}
-
-.date-card-desc {
-  margin-top: 0.45rem;
-  color: var(--muted);
-}
-
-.date-card.is-confirmed {
-  background: var(--navy-900);
-  border-color: var(--navy-900);
-}
-
-.date-card.is-confirmed .date-card-label,
-.date-card.is-confirmed .date-card-date,
-.date-card.is-confirmed .date-card-desc {
-  color: var(--white);
+.route-card > .button-row:last-child {
+  margin-top: auto;
+  padding-top: 1.25rem;
 }
 
 .topic-list {
@@ -845,14 +776,12 @@ ol:last-child {
 }
 
 /* Speakers */
-.featured-speaker-grid,
 .plenary-grid,
 .keynote-grid {
   display: grid;
   gap: clamp(1.15rem, 2.3vw, 1.8rem);
 }
 
-.featured-speaker-grid,
 .plenary-grid {
   grid-template-columns: repeat(3, minmax(0, 1fr));
 }
@@ -962,11 +891,14 @@ ol:last-child {
 .speaker-directory [data-speaker="amitava-patra"],
 .speaker-directory [data-speaker="biswarup-pathak"],
 .speaker-directory [data-speaker="quan-ming-wang"],
+.speaker-directory [data-speaker="di-sun"],
 .speaker-directory [data-speaker="yan-zhu"],
 .speaker-directory [data-speaker="yong-pei"],
+.speaker-directory [data-speaker="yu-han"],
 .speaker-directory [data-speaker="xavier-le-guevel"],
 .speaker-directory [data-speaker="xiaodong-zhang"],
 .speaker-directory [data-speaker="sarah-s-park"],
+.speaker-directory [data-speaker="saptarshi-mukherjee"],
 .speaker-directory [data-speaker="seiji-yamazoe"],
 .speaker-directory [data-speaker="shuang-quan-zang"],
 .speaker-directory [data-speaker="stacy-copp"] {
@@ -981,28 +913,21 @@ ol:last-child {
 .speaker-directory [data-speaker="amitava-patra"] .speaker-card__portrait,
 .speaker-directory [data-speaker="biswarup-pathak"] .speaker-card__portrait,
 .speaker-directory [data-speaker="quan-ming-wang"] .speaker-card__portrait,
+.speaker-directory [data-speaker="di-sun"] .speaker-card__portrait,
 .speaker-directory [data-speaker="yan-zhu"] .speaker-card__portrait,
 .speaker-directory [data-speaker="yong-pei"] .speaker-card__portrait,
+.speaker-directory [data-speaker="yu-han"] .speaker-card__portrait,
 .speaker-directory [data-speaker="xavier-le-guevel"] .speaker-card__portrait,
 .speaker-directory [data-speaker="xiaodong-zhang"] .speaker-card__portrait,
 .speaker-directory [data-speaker="sarah-s-park"] .speaker-card__portrait,
+.speaker-directory [data-speaker="saptarshi-mukherjee"] .speaker-card__portrait,
 .speaker-directory [data-speaker="seiji-yamazoe"] .speaker-card__portrait,
 .speaker-directory [data-speaker="shuang-quan-zang"] .speaker-card__portrait,
 .speaker-directory [data-speaker="stacy-copp"] .speaker-card__portrait {
   object-position: center;
 }
 
-.speaker-directory [data-speaker="jun-li"] {
-  --portrait-scale: 1.45;
-}
-
-.speaker-directory [data-speaker="tatsuya-tsukuda"] {
-  --portrait-scale: 1.32;
-}
-
-.speaker-directory [data-speaker="quan-ming-wang"],
-.speaker-directory [data-speaker="xiaodong-zhang"],
-.speaker-directory [data-speaker="sarah-s-park"] {
+.speaker-directory [data-speaker="xiaodong-zhang"] {
   --portrait-scale: 1.12;
 }
 
@@ -1012,10 +937,6 @@ ol:last-child {
 
 .speaker-directory [data-speaker="yong-pei"] {
   --portrait-scale: 1.18;
-}
-
-.speaker-directory [data-speaker="shuang-quan-zang"] {
-  --portrait-scale: 1.08;
 }
 
 .speaker-directory [data-speaker="stacy-copp"] {
@@ -1061,27 +982,17 @@ ol:last-child {
 }
 
 .speaker-directory [data-speaker="sukhendu-mandal"] {
-  --portrait-origin: 50% 25%;
-  --portrait-scale: 3.4;
-  --portrait-shift-y: 12%;
+  --portrait-origin: 50% 50%;
+  --portrait-scale: 1.45;
+  --portrait-shift-x: -4%;
+  --portrait-shift-y: 8%;
 }
 
 .speaker-directory [data-speaker="xue-bai"] {
-  --portrait-origin: 55% 30%;
-  --portrait-scale: 1.68;
-  --portrait-shift-y: 12%;
-}
-
-.speaker-directory [data-speaker="yu-han"] {
-  --portrait-origin: 50% 32%;
-  --portrait-scale: 1.32;
-  --portrait-shift-y: 7%;
-}
-
-.speaker-directory [data-speaker="saptarshi-mukherjee"] {
-  --portrait-origin: 50% 32%;
-  --portrait-scale: 1.22;
-  --portrait-shift-y: 4%;
+  --portrait-origin: 50% 50%;
+  --portrait-scale: 1.35;
+  --portrait-shift-x: -2%;
+  --portrait-shift-y: 8%;
 }
 
 .speaker-directory .keynote-grid .speaker-media {
@@ -1126,12 +1037,6 @@ ol:last-child {
 .tag--keynote {
   color: var(--navy-800);
   background: var(--blue-100);
-}
-
-.speaker-divider {
-  height: 1px;
-  margin-block: clamp(3.25rem, 7vw, 5.25rem);
-  background: var(--line);
 }
 
 .speaker-group + .speaker-group {
@@ -1232,6 +1137,10 @@ ol:last-child {
   box-shadow: var(--shadow-md);
 }
 
+.hotel-feature {
+  border: 2px solid var(--gold-300);
+}
+
 .venue-spotlight__content,
 .hotel-feature__content {
   padding: clamp(1.75rem, 4vw, 3.25rem);
@@ -1263,6 +1172,7 @@ ol:last-child {
   width: 100%;
   height: 100%;
   object-fit: cover;
+  object-position: center 58%;
 }
 
 .venue-spotlight__visual--photo figcaption {
@@ -1280,34 +1190,11 @@ ol:last-child {
   font-weight: 650;
 }
 
-.venue-monogram {
-  color: var(--white);
-  text-align: center;
-}
-
-.venue-monogram strong {
-  display: block;
-  font-family: Georgia, "Times New Roman", serif;
-  font-size: clamp(4rem, 10vw, 7.5rem);
-  letter-spacing: -0.05em;
-  line-height: 0.9;
-}
-
-.venue-monogram span {
-  display: block;
-  max-width: 26ch;
-  margin: 1.2rem auto 0;
-  color: #dbe7f4;
-  font-size: 0.82rem;
-  font-weight: 700;
-  letter-spacing: 0.08em;
-  text-transform: uppercase;
-}
-
 .hotel-feature__visual img {
   width: 100%;
   height: 100%;
   object-fit: cover;
+  object-position: left center;
 }
 
 .fact-list {
@@ -1319,8 +1206,7 @@ ol:last-child {
   list-style: none;
 }
 
-.fact-list li,
-.venue-fact {
+.fact-list li {
   display: grid;
   grid-template-columns: minmax(110px, 0.35fr) minmax(0, 0.65fr);
   gap: 1rem;
@@ -1328,76 +1214,14 @@ ol:last-child {
   border-bottom: 1px solid var(--line);
 }
 
-.fact-list span,
-.venue-fact-label {
+.fact-list span {
   color: var(--muted);
   font-size: 0.85rem;
   font-weight: 700;
 }
 
-.fact-list strong,
-.venue-fact-value {
+.fact-list strong {
   color: var(--navy-950);
-}
-
-.home-visitor-duo {
-  display: grid;
-  grid-template-columns: repeat(2, minmax(0, 1fr));
-  gap: var(--card-gap);
-}
-
-.home-visitor-panel {
-  display: flex;
-  flex-direction: column;
-}
-
-.home-visitor-panel .eyebrow {
-  margin-bottom: 0.9rem;
-}
-
-.link-list {
-  display: grid;
-  gap: 0.65rem;
-  margin: 1.25rem 0 0;
-  padding: 0;
-  list-style: none;
-}
-
-.link-list a {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  gap: 1rem;
-  padding: 0.8rem 0;
-  border-bottom: 1px solid var(--line);
-  font-weight: 700;
-  text-decoration: none;
-}
-
-.link-list a::after {
-  content: "→";
-  color: var(--gold-600);
-}
-
-.sponsor-callout {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  gap: 2rem;
-  padding: clamp(1.75rem, 4vw, 3rem);
-  background: var(--navy-900);
-  border-radius: var(--radius-lg);
-}
-
-.sponsor-callout h2,
-.sponsor-callout p {
-  color: var(--white);
-}
-
-.sponsor-callout p {
-  max-width: 68ch;
-  margin-bottom: 0;
-  color: #d7e2ef;
 }
 
 /* Timeline */
@@ -1517,6 +1341,9 @@ ol:last-child {
 }
 
 .travel-card {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
   overflow: hidden;
   padding: 0;
 }
@@ -1534,12 +1361,16 @@ ol:last-child {
 }
 
 .travel-card__body {
+  display: flex;
+  flex: 1;
+  flex-direction: column;
   padding: var(--card-pad);
 }
 
-.hotel-feature {
-  margin-bottom: var(--card-gap);
-  border: 2px solid var(--gold-300);
+.travel-card__body > a:last-child {
+  align-self: flex-start;
+  margin-top: auto;
+  padding-top: 0.9rem;
 }
 
 .source-card {
@@ -1599,16 +1430,8 @@ ol:last-child {
   object-fit: cover;
 }
 
-.media-1x1 {
-  aspect-ratio: 1;
-}
-
 .media-4x3 {
   aspect-ratio: 4 / 3;
-}
-
-.media-round {
-  border-radius: 14px;
 }
 
 /* Footer */
@@ -1636,7 +1459,7 @@ ol:last-child {
   position: relative;
   z-index: 1;
   display: grid;
-  grid-template-columns: minmax(210px, 1.2fr) 0.7fr 0.8fr 1.2fr;
+  grid-template-columns: minmax(220px, 1.1fr) 0.65fr 0.8fr 1.35fr;
   gap: clamp(1.5rem, 4vw, 3.25rem);
   padding-bottom: 3rem;
 }
@@ -1644,15 +1467,16 @@ ol:last-child {
 .footer-logo-panel {
   display: inline-flex;
   width: min(260px, 100%);
+  padding: 0.75rem;
+  background: var(--white);
+  border: 1px solid rgba(255, 255, 255, 0.85);
+  border-radius: 16px;
+  box-shadow: 0 16px 35px rgba(0, 0, 0, 0.2);
 }
 
 .footer-logo-image {
   width: 100%;
   height: auto;
-}
-
-.footer-brand-text {
-  display: none;
 }
 
 .site-footer h3 {
@@ -1686,6 +1510,13 @@ ol:last-child {
 
 .site-footer .footer-contact {
   margin-top: 0.9rem;
+}
+
+.footer-secondary-contact {
+  display: inline-block;
+  margin-top: 0.35rem;
+  color: #9fb0c4;
+  font-size: 0.78rem;
 }
 
 .site-footer ul {
@@ -1822,15 +1653,9 @@ ol:last-child {
     flex-direction: column;
   }
 
-  .home-facts__grid,
-  .about-grid,
-  .feature-row,
-  .dates-timeline,
-  .featured-speaker-grid,
   .plenary-grid,
   .venue-spotlight,
   .hotel-feature,
-  .home-visitor-duo,
   .travel-overview,
   .hotel-grid,
   .experience-grid,
@@ -1839,17 +1664,6 @@ ol:last-child {
     grid-template-columns: repeat(2, minmax(0, 1fr));
   }
 
-  .home-facts__grid {
-    overflow: visible;
-  }
-
-  .home-fact:nth-child(3) {
-    grid-column: 1 / -1;
-    border-top: 1px solid var(--line);
-    border-left: 0;
-  }
-
-  .about-grid,
   .venue-spotlight,
   .hotel-feature,
   .travel-overview {
@@ -1870,10 +1684,6 @@ ol:last-child {
     min-height: 300px;
   }
 
-  .sponsor-callout {
-    align-items: flex-start;
-    flex-direction: column;
-  }
 }
 
 @media (max-width: 620px) {
@@ -1917,19 +1727,10 @@ ol:last-child {
     width: 100%;
   }
 
-  .home-facts {
-    margin-top: -1rem;
-  }
-
-  .home-facts__grid,
-  .feature-row,
-  .dates-timeline,
-  .featured-speaker-grid,
   .plenary-grid,
   .grid-2,
   .grid-3,
   .grid-4,
-  .home-visitor-duo,
   .route-grid,
   .hotel-grid,
   .experience-grid,
@@ -1969,16 +1770,6 @@ ol:last-child {
     width: 100%;
   }
 
-  .home-fact:nth-child(3) {
-    grid-column: auto;
-  }
-
-  .home-fact + .home-fact,
-  .home-fact:nth-child(3) {
-    border-top: 1px solid var(--line);
-    border-left: 0;
-  }
-
   .topic-list {
     grid-template-columns: 1fr;
   }
@@ -1992,8 +1783,7 @@ ol:last-child {
     height: 30px;
   }
 
-  .fact-list li,
-  .venue-fact {
+  .fact-list li {
     grid-template-columns: 1fr;
     gap: 0.2rem;
   }

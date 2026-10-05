@@ -67,14 +67,14 @@
     "name": "Jun Li",
     "affiliation": "Tsinghua University",
     "photo": "assets/speakers-plenary/jun-li.jpg",
-    "photoVersion": "20261005-3"
+    "photoVersion": "20261005-6"
   },
   {
     "role": "keynote",
     "name": "Quan-Ming Wang",
     "affiliation": "Tsinghua University",
     "photo": "assets/speakers-keynote/quan-ming-wang.jpg",
-    "photoVersion": "20261005-3"
+    "photoVersion": "20261005-6"
   },
   {
     "role": "keynote",
@@ -87,13 +87,14 @@
     "name": "Shuang-Quan Zang",
     "affiliation": "Zhengzhou University",
     "photo": "assets/speakers-keynote/shuang-quan-zang.jpg",
-    "photoVersion": "20261005-3"
+    "photoVersion": "20261005-6"
   },
   {
     "role": "keynote",
     "name": "Di Sun",
     "affiliation": "Shandong University",
-    "photo": "assets/speakers-keynote/di-sun.jpg"
+    "photo": "assets/speakers-keynote/di-sun.jpg",
+    "photoVersion": "20261005-6"
   },
   {
     "role": "keynote",
@@ -137,14 +138,15 @@
     "role": "keynote",
     "name": "Yu Han",
     "affiliation": "South China University of Technology",
-    "photo": "assets/speakers-keynote/yu-han.jpg"
+    "photo": "assets/speakers-keynote/yu-han.jpg",
+    "photoVersion": "20261005-6"
   },
   {
     "role": "keynote",
     "name": "Yong Pei",
     "affiliation": "Xiangtan University",
     "photo": "assets/speakers-keynote/yong-pei.jpg",
-    "photoVersion": "20261005-3"
+    "photoVersion": "20261005-6"
   },
   {
     "role": "keynote",
@@ -157,7 +159,7 @@
     "name": "Tatsuya Tsukuda",
     "affiliation": "The University of Tokyo",
     "photo": "assets/speakers-plenary/tatsuya-tsukuda.jpg",
-    "photoVersion": "20261005-3"
+    "photoVersion": "20261005-6"
   },
   {
     "role": "plenary",
@@ -188,14 +190,14 @@
     "name": "Sarah S. Park",
     "affiliation": "Korea Advanced Institute of Science & Technology (KAIST)",
     "photo": "assets/speakers-keynote/sarah-s-park.jpg",
-    "photoVersion": "20261005-3"
+    "photoVersion": "20261005-7"
   },
   {
     "role": "keynote",
     "name": "Amitava Patra",
     "affiliation": "Institute of Nano Science and Technology",
     "photo": "assets/speakers-keynote/amitava-patra.jpg",
-    "photoVersion": "20261005-4"
+    "photoVersion": "20261005-6"
   },
   {
     "role": "keynote",
@@ -220,13 +222,14 @@
     "role": "keynote",
     "name": "Saptarshi Mukherjee",
     "affiliation": "Indian Institute of Science Education and Research Bhopal",
-    "photo": "assets/speakers-keynote/saptarshi-mukherjee.jpg"
+    "photo": "assets/speakers-keynote/saptarshi-mukherjee.jpg",
+    "photoVersion": "20261005-6"
   },
   {
     "role": "keynote",
     "name": "Biswarup Pathak",
     "affiliation": "Indian Institute of Technology, Indore",
     "photo": "assets/speakers-keynote/biswarup-pathak.jpg",
-    "photoVersion": "20261005-3"
+    "photoVersion": "20261005-6"
   }
 ]

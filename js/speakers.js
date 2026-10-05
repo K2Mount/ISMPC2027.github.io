@@ -11,7 +11,7 @@
 
   const createCard = (speaker) => {
     const article = document.createElement("article");
-    article.className = `speaker-card speaker-card--${speaker.role}`;
+    article.className = "speaker-card";
     article.dataset.speaker = speaker.photo.split("/").pop().replace(/\.[^.]+$/, "");
 
     const media = document.createElement("div");

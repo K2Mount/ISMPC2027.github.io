@@ -8,8 +8,9 @@ Static GitHub Pages website for the 9th International Symposium on Monolayer-Pro
 - Recommended accommodation: The Ridge, NUS, 17 Computing Drive, Singapore 119881.
 - Welcome reception: The Ridge; date, time, and room details are to be confirmed.
 - Detailed SFAH room assignments are to be confirmed.
-- Local organizer: Xie Research Group, Department of Chemical and Biomolecular Engineering, National University of Singapore.
-- Public conference email: `ismpc2027@gmail.com`.
+- Local organizer: Xie Group @ NUS, Department of Chemical and Biomolecular Engineering, National University of Singapore.
+- Conference Chair: Prof. Jianping Xie; Conference Secretary: Dr. Zhucheng Yang.
+- Primary conference email: `ismpc2027@gmail.com`; secondary contact: `zc_yang@nus.edu.sg`.
 
 Do not add a room number, floor, shuttle route, fee, submission date, or booking promise until it has been confirmed by the organizing team.
 
@@ -28,6 +29,20 @@ Do not add a room number, floor, shuttle route, fee, submission date, or booking
 
 The site intentionally uses plain HTML, CSS, and JavaScript. Repeated header and footer markup should remain identical across pages until a build system or template layer is introduced.
 
+## Design system and maintenance
+
+- Global colour, radius, spacing, section, and card values live in `:root` at the top of `css/style.css`. Adjust those tokens before adding page-specific values.
+- Use `.grid` with `.grid-2`, `.grid-3`, or `.grid-4` for standard card layouts, and `.content-stack` for vertically separated page modules. Avoid one-off margin classes.
+- `.eyebrow` owns the spacing below its label. Do not add local label-to-heading margins unless the component is intentionally different.
+- Keep portrait-specific crop corrections in the existing speaker override block; do not add inline styles to generated speaker cards.
+- Keep the site dependency-free unless a template/build step is deliberately adopted and documented. The current static files remain directly deployable to GitHub Pages.
+
+Run the maintenance check after shared navigation/footer edits, asset replacements, or cache-version changes:
+
+```sh
+python3 tools/check-site.py
+```
+
 The primary navigation groups venue, accommodation, transport, and visitor guidance under **Attend**. `venue.html` remains a focused detail page linked from the Attend page and footer.
 
 ## Local preview
@@ -45,7 +60,7 @@ Then open `http://localhost:8000/`.
 1. Start the local preview server, then open `http://localhost:8000/tools/speaker-editor.html`.
 2. Search for a speaker, update the form (including an optional proposed talk title), and choose **Apply changes**.
 3. Choose **Save speakers-data.json** and save over the repository-root `speakers-data.json` file. Browsers without direct file-save support download a replacement file instead.
-4. Put source-preserving plenary delivery images in `assets/speakers-plenary/`; keynote delivery portraits belong in `assets/speakers-keynote/`. Keep the originals in `assets/speakers/`.
+4. Keep the best original in `assets/speakers/` using a lowercase, hyphenated name. Move the superseded original into a dated folder under `assets/speakers/archive/`, then put the optimized plenary or keynote JPEG in `assets/speakers-plenary/` or `assets/speakers-keynote/`.
 5. Refresh `speakers.html` and verify the portrait crop at desktop and mobile widths before committing.
 
 ## Before publishing an update
@@ -60,7 +75,7 @@ Then open `http://localhost:8000/`.
 
 - Use en dashes in date ranges: `1–4 August 2027`.
 - Use `Shaw Foundation Alumni House (SFAH)` on first mention and `SFAH` thereafter.
-- Describe The Ridge as the recommended option for eligible NUS-affiliated or invited conference guests; accommodation remains subject to eligibility and availability.
+- Describe The Ridge as the recommended option for eligible conference delegates. Requests are collected during registration for a coordinated group booking; reservation links are issued only after arrangements are confirmed, and rooms remain subject to NUS eligibility and availability.
 - Label tentative dates and activities clearly. Do not present inactive buttons as live registration or submission actions.
 - Keep private or operational contact details out of `speakers-data.json`; it is a publicly downloadable website asset.
 - When replacing an existing speaker portrait without changing its filename, update that speaker's `photoVersion` value to prevent stale browser caches.
