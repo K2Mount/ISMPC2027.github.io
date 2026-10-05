@@ -1,0 +1,106 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="robots" content="noindex, nofollow">
+  <title>Speaker Editor | ISMPC2027</title>
+  <link rel="stylesheet" href="speaker-editor.css?v=2">
+</head>
+<body>
+  <header class="tool-header">
+    <div>
+      <p class="eyebrow">Local maintenance tool</p>
+      <h1>Speaker editor</h1>
+      <p>Edit the public speaker directory without touching page HTML. Changes remain in this browser until you save the JSON file.</p>
+    </div>
+    <a class="preview-link" href="../speakers.html" target="_blank" rel="noopener">Open speaker preview</a>
+  </header>
+
+  <main class="editor-shell">
+    <aside class="directory-panel" aria-label="Speaker directory">
+      <div class="filters">
+        <label>
+          <span>Search</span>
+          <input id="speaker-search" type="search" placeholder="Name or affiliation">
+        </label>
+        <label>
+          <span>Role</span>
+          <select id="role-filter">
+            <option value="all">All speakers</option>
+            <option value="plenary">Plenary</option>
+            <option value="keynote">Keynote</option>
+          </select>
+        </label>
+      </div>
+      <div class="directory-heading">
+        <strong id="speaker-count">Loading…</strong>
+        <button id="add-speaker" type="button">+ Add speaker</button>
+      </div>
+      <ul id="speaker-list" class="speaker-list"></ul>
+    </aside>
+
+    <section class="editor-panel" aria-labelledby="editor-title">
+      <div id="empty-state" class="empty-state">
+        <h2 id="editor-title">Select a speaker</h2>
+        <p>Choose a name from the directory or add a new speaker.</p>
+      </div>
+
+      <form id="speaker-form" hidden>
+        <div class="portrait-preview">
+          <img id="portrait-preview" alt="">
+          <p>Preview from the current photo path</p>
+        </div>
+
+        <div class="form-grid">
+          <label class="field field-wide">
+            <span>Name</span>
+            <input id="speaker-name" name="name" required autocomplete="off">
+          </label>
+          <label class="field field-wide">
+            <span>Affiliation</span>
+            <input id="speaker-affiliation" name="affiliation" required autocomplete="organization">
+          </label>
+          <label class="field field-wide">
+            <span>Proposed talk title</span>
+            <input id="speaker-talk-title" name="talkTitle" autocomplete="off" placeholder="Leave blank to show “Talk title to be announced”">
+            <small>This appears below the role label on the public speaker card. It can be added or revised later.</small>
+          </label>
+          <label class="field">
+            <span>Role</span>
+            <select id="speaker-role" name="role" required>
+              <option value="plenary">Plenary</option>
+              <option value="keynote">Keynote</option>
+            </select>
+          </label>
+          <label class="field field-wide">
+            <span>Photo path</span>
+            <input id="speaker-photo" name="photo" required placeholder="assets/speakers-keynote/name.jpg" spellcheck="false">
+            <small>Use a repository-relative path. Put plenary and keynote delivery images in their respective <code>assets/speakers-*/</code> folders.</small>
+          </label>
+          <label class="field">
+            <span>Photo version</span>
+            <input id="speaker-photo-version" name="photoVersion" placeholder="20261003" inputmode="numeric">
+            <small>Change this when replacing a file at the same path.</small>
+          </label>
+        </div>
+
+        <div class="form-actions">
+          <button class="primary-action" type="submit">Apply changes</button>
+          <button class="danger-action" id="remove-speaker" type="button">Remove speaker</button>
+        </div>
+      </form>
+    </section>
+  </main>
+
+  <footer class="save-bar">
+    <p id="editor-status" role="status">Loading speakers-data.json…</p>
+    <div>
+      <button id="copy-json" type="button" disabled>Copy JSON</button>
+      <button class="primary-action" id="save-json" type="button" disabled>Save speakers-data.json</button>
+    </div>
+  </footer>
+
+  <script src="speaker-editor.js?v=4"></script>
+</body>
+</html>
