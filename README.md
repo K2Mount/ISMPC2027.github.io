@@ -1,10 +1,11 @@
 # ISMPC2027 website
 
-Static GitHub Pages website for the 9th International Symposium on Monolayer-Protected Clusters, Singapore, 1–4 August 2027.
+Static GitHub Pages website for the 9th International Symposium on Monolayer-Protected Clusters, Singapore, 31 July–4 August 2027.
 
 ## Current confirmed event information
 
 - Main venue: Shaw Foundation Alumni House (SFAH), 11 Kent Ridge Drive, Singapore 119244.
+- On-site registration: 31 July 2027; scientific programme: 1–4 August 2027.
 - Recommended accommodation: The Ridge, NUS, 17 Computing Drive, Singapore 119881.
 - Welcome reception: The Ridge; date, time, and room details are to be confirmed.
 - Detailed SFAH room assignments are to be confirmed.
@@ -16,11 +17,11 @@ Do not add a room number, floor, shuttle route, fee, submission date, or booking
 
 ## Site structure
 
-- `index.html`: focused homepage with event identity, essential facts, and the complete invited-speaker roster.
+- `index.html`: focused homepage with event identity, essential facts, and the plenary/keynote portrait rosters.
 - `venue.html`: venue and reception information.
 - `travel.html`: entry, transport, accommodation, and visitor guidance.
 - `attendee.html`: accessibility, dietary, visa-support, conduct, and privacy guidance.
-- `speakers.html` and `speakers-data.json`: confirmed speaker directory and its single public source of truth.
+- `speakers.html`, `speakers-data.json`, and `invited-speakers-data.json`: confirmed portrait directory and the public name/affiliation list for invited speakers.
 - `ismpc2027.ics`: downloadable all-day calendar entry for the confirmed conference dates.
 - `css/style.css`: shared design system and responsive layouts.
 - `js/main.js`: responsive navigation and current-page state.
@@ -63,6 +64,8 @@ Then open `http://localhost:8000/`.
 4. Keep the best original in `assets/speakers/` using a lowercase, hyphenated name. Move the superseded original into a dated folder under `assets/speakers/archive/`, then put the optimized plenary or keynote JPEG in `assets/speakers-plenary/` or `assets/speakers-keynote/`.
 5. Refresh `speakers.html` and verify the portrait crop at desktop and mobile widths before committing.
 
+The invited-speaker list is maintained separately in `invited-speakers-data.json` because it does not use portraits. Keep only public names and affiliations in that file. The operational Excel roster contains private contact details and must not be copied into this public repository.
+
 ## Before publishing an update
 
 1. Search all HTML files for outdated venue or date wording.
@@ -73,7 +76,7 @@ Then open `http://localhost:8000/`.
 
 ## Content conventions
 
-- Use en dashes in date ranges: `1–4 August 2027`.
+- Use `31 July–4 August 2027` for the overall conference dates. When schedule detail matters, state `Registration: 31 July 2027` and `Scientific programme: 1–4 August 2027` separately.
 - Use `Shaw Foundation Alumni House (SFAH)` on first mention and `SFAH` thereafter.
 - Describe The Ridge as the recommended option for eligible conference delegates. Requests are collected during registration for a coordinated group booking; reservation links are issued only after arrangements are confirmed, and rooms remain subject to NUS eligibility and availability.
 - Label tentative dates and activities clearly. Do not present inactive buttons as live registration or submission actions.

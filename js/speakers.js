@@ -1,6 +1,7 @@
 (function () {
-  const targets = document.querySelectorAll("[data-speaker-role]");
-  if (!targets.length) return;
+  const portraitTargets = document.querySelectorAll("[data-speaker-role]");
+  const invitedTarget = document.querySelector("[data-invited-speakers]");
+  if (!portraitTargets.length && !invitedTarget) return;
 
   const scriptVersion = document.currentScript
     ? new URL(document.currentScript.src, window.location.href).searchParams.get("v")
@@ -8,6 +9,9 @@
   const speakerDataUrl = scriptVersion
     ? `speakers-data.json?v=${encodeURIComponent(scriptVersion)}`
     : "speakers-data.json";
+  const invitedDataUrl = scriptVersion
+    ? `invited-speakers-data.json?v=${encodeURIComponent(scriptVersion)}`
+    : "invited-speakers-data.json";
 
   const createCard = (speaker) => {
     const article = document.createElement("article");
@@ -54,29 +58,72 @@
     return article;
   };
 
-  fetch(speakerDataUrl, { cache: "no-cache" })
-    .then((response) => {
-      if (!response.ok) throw new Error(`Speaker data request failed: ${response.status}`);
-      return response.json();
-    })
-    .then((speakers) => {
-      targets.forEach((target) => {
-        const role = target.dataset.speakerRole;
-        const fragment = document.createDocumentFragment();
-        const group = speakers.filter((speaker) => speaker.role === role);
-        if (role === "keynote") group.sort((a, b) => a.name.localeCompare(b.name));
-        group.forEach((speaker) => fragment.appendChild(createCard(speaker)));
-        target.replaceChildren(fragment);
-        target.removeAttribute("aria-busy");
+  const createInvitedItem = (speaker) => {
+    const article = document.createElement("article");
+    article.className = "invited-speaker-item";
+
+    const name = document.createElement("h3");
+    name.textContent = speaker.name;
+
+    const affiliation = document.createElement("p");
+    affiliation.textContent = speaker.affiliation;
+
+    article.append(name, affiliation);
+    return article;
+  };
+
+  if (portraitTargets.length) {
+    fetch(speakerDataUrl, { cache: "no-cache" })
+      .then((response) => {
+        if (!response.ok) throw new Error(`Speaker data request failed: ${response.status}`);
+        return response.json();
+      })
+      .then((speakers) => {
+        portraitTargets.forEach((target) => {
+          const role = target.dataset.speakerRole;
+          const fragment = document.createDocumentFragment();
+          const group = speakers.filter((speaker) => speaker.role === role);
+          if (role === "keynote") group.sort((a, b) => a.name.localeCompare(b.name));
+          group.forEach((speaker) => fragment.appendChild(createCard(speaker)));
+          target.replaceChildren(fragment);
+          target.removeAttribute("aria-busy");
+          document.querySelectorAll(`[data-speaker-count="${role}"]`).forEach((count) => {
+            count.textContent = `${group.length} confirmed`;
+          });
+        });
+      })
+      .catch(() => {
+        portraitTargets.forEach((target) => {
+          target.removeAttribute("aria-busy");
+          const message = document.createElement("p");
+          message.className = "speaker-load-note";
+          message.textContent = "Speaker details are temporarily unavailable. Please refresh the page or visit again shortly.";
+          target.replaceChildren(message);
+        });
       });
-    })
-    .catch(() => {
-      targets.forEach((target) => {
-        target.removeAttribute("aria-busy");
+  }
+
+  if (invitedTarget) {
+    fetch(invitedDataUrl, { cache: "no-cache" })
+      .then((response) => {
+        if (!response.ok) throw new Error(`Invited-speaker data request failed: ${response.status}`);
+        return response.json();
+      })
+      .then((speakers) => {
+        const fragment = document.createDocumentFragment();
+        speakers.forEach((speaker) => fragment.appendChild(createInvitedItem(speaker)));
+        invitedTarget.replaceChildren(fragment);
+        invitedTarget.removeAttribute("aria-busy");
+        document.querySelectorAll("[data-invited-count]").forEach((count) => {
+          count.textContent = `${speakers.length} confirmed`;
+        });
+      })
+      .catch(() => {
+        invitedTarget.removeAttribute("aria-busy");
         const message = document.createElement("p");
         message.className = "speaker-load-note";
-        message.textContent = "Speaker details are temporarily unavailable. Please refresh the page or visit again shortly.";
-        target.replaceChildren(message);
+        message.textContent = "The invited-speaker list is temporarily unavailable. Please refresh the page or visit again shortly.";
+        invitedTarget.replaceChildren(message);
       });
-    });
+  }
 })();

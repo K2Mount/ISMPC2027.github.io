@@ -4,12 +4,12 @@ PRODID:-//ISMPC2027//Conference Calendar//EN
 CALSCALE:GREGORIAN
 METHOD:PUBLISH
 BEGIN:VEVENT
-UID:20270801-ismpc2027@nus.edu.sg
-DTSTAMP:20261005T000000Z
-DTSTART;VALUE=DATE:20270801
+UID:20270731-ismpc2027@nus.edu.sg
+DTSTAMP:20261008T000000Z
+DTSTART;VALUE=DATE:20270731
 DTEND;VALUE=DATE:20270805
 SUMMARY:ISMPC2027
-DESCRIPTION:9th International Symposium on Monolayer-Protected Clusters.
+DESCRIPTION:Registration on 31 July 2027. Scientific programme from 1 to 4 August 2027.
 LOCATION:Shaw Foundation Alumni House\, 11 Kent Ridge Drive\, Singapore 119244
 URL:https://k2mount.github.io/ISMPC2027.github.io/
 STATUS:CONFIRMED

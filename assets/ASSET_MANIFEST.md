@@ -20,6 +20,7 @@ Files in `assets/optimized/` are the versions currently delivered by the website
 | `optimized/icon-globe.png` | 128 × 128 | Homepage global-community icon | `icons/globe.png` |
 | `optimized/icon-community.png` | 128 × 128 | Homepage applications icon | `icons/community.png` |
 | `optimized/river-bumboat.jpg` | 1400 × 1050 | River-cruise feature | `travel/photo-bumboat.jpg` |
+| `optimized/night-safari.avif` | 1905 × 1270 | Night Safari social-event option | `travel/night-safari-source.avif` |
 | `optimized/gardens-by-the-bay.jpg` | 1400 × 838 | Singapore experience card | `travel/photo-gardens-by-the-bay.jpg` |
 | `optimized/botanic-gardens.jpg` | 1400 × 977 | Singapore experience card | `travel/photo-botanic-gardens.jpg` |
 | `optimized/marina-bay.jpg` | 1280 × 853 | Marina Bay travel imagery | `travel/photo-marina-bay.jpg` |
@@ -44,7 +45,7 @@ The corresponding pre-replacement originals are retained in `assets/speakers/arc
 - `assets/speakers/archive/` contains dated, superseded originals retained for rollback and should never be referenced by public pages.
 - `assets/speakers-keynote/` contains web-delivery keynote JPEGs prepared for the circular card treatment.
 - `assets/speakers-plenary/` contains web-delivery plenary portraits prepared for the larger circular cards.
-- `assets/travel/` contains travel and accommodation source images. `the-ridge-frontage-source.png` is the active high-resolution source for the recommended-hotel feature.
+- `assets/travel/` contains travel, accommodation, and social-event source images. `the-ridge-frontage-source.png` is the active high-resolution source for the recommended-hotel feature, and `night-safari-source.avif` is the supplied source for the Night Safari option.
 - `assets/travel/archive/` retains superseded or alternate Ridge imagery for rollback. Public pages use the compressed derivative in `assets/optimized/`.
 - `assets/venue/` contains the supplied Shaw Foundation Alumni House source image as well as legacy NUS University Town images. Only `shaw-foundation-alumni-house.webp` should be identified as the conference venue.
 - `assets/ornaments/` and `assets/icons/` contain decorative artwork. Decorative images should use `alt=""`.

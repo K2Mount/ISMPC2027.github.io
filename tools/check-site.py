@@ -98,10 +98,33 @@ def main() -> int:
         if target is not None and not target.exists():
             errors.append(f"css/style.css: missing local asset {reference}")
 
-    try:
-        json.loads((ROOT / "speakers-data.json").read_text(encoding="utf-8"))
-    except (OSError, json.JSONDecodeError) as exc:
-        errors.append(f"speakers-data.json: {exc}")
+    for filename, required_fields in (
+        ("speakers-data.json", {"role", "name", "affiliation", "photo"}),
+        ("invited-speakers-data.json", {"name", "affiliation"}),
+    ):
+        try:
+            records = json.loads((ROOT / filename).read_text(encoding="utf-8"))
+            if not isinstance(records, list) or not records:
+                errors.append(f"{filename}: expected a non-empty list")
+                continue
+            names: list[str] = []
+            for index, record in enumerate(records, start=1):
+                if not isinstance(record, dict):
+                    errors.append(f"{filename}: record {index} is not an object")
+                    continue
+                missing = required_fields - record.keys()
+                if missing:
+                    errors.append(f"{filename}: record {index} is missing {sorted(missing)}")
+                name = record.get("name")
+                if not isinstance(name, str) or not name.strip():
+                    errors.append(f"{filename}: record {index} has no valid name")
+                else:
+                    names.append(name.casefold())
+            duplicates = sorted({name for name in names if names.count(name) > 1})
+            if duplicates:
+                errors.append(f"{filename}: duplicate names {duplicates}")
+        except (OSError, json.JSONDecodeError) as exc:
+            errors.append(f"{filename}: {exc}")
 
     if errors:
         print("Site checks failed:")
@@ -111,7 +134,7 @@ def main() -> int:
 
     print(
         f"Site checks passed: {len(ROOT_PAGES)} pages, shared navigation/footer, "
-        f"local assets, stylesheet version {next(iter(css_versions))}, and speaker JSON."
+        f"local assets, stylesheet version {next(iter(css_versions))}, and speaker JSON files."
     )
     return 0
 
