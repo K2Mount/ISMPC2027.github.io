@@ -231,5 +231,19 @@
     "affiliation": "Indian Institute of Technology, Indore",
     "photo": "assets/speakers-keynote/biswarup-pathak.jpg",
     "photoVersion": "20261005-6"
+  },
+  {
+    "role": "keynote",
+    "name": "Liqiang Li",
+    "affiliation": "Tianjin University",
+    "photo": "assets/speakers-keynote/liqiang-li.jpg",
+    "photoVersion": "20261105-2"
+  },
+  {
+    "role": "keynote",
+    "name": "Hui Xu",
+    "affiliation": "Heilongjiang University",
+    "photo": "assets/speakers-keynote/hui-xu.jpg",
+    "photoVersion": "20261105-2"
   }
 ]
